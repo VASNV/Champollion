@@ -231,6 +231,9 @@ ProcessResults processFile(fs::path file, Params params)
         case Pex::Binary::Fallout4Script:
             gameType = "Fallout 4";
             break;
+        case Pex::Binary::Fallout76Script:
+            gameType = "Fallout 76";
+            break;    
         case Pex::Binary::StarfieldScript:
             gameType = "Starfield";
             break;
@@ -281,7 +284,7 @@ ProcessResults processFile(fs::path file, Params params)
         }
     }
     fs::path dir_structure;
-    if (params.recreateDirStructure && (pex.getGameType() == Pex::Binary::Fallout4Script || pex.getGameType() == Pex::Binary::StarfieldScript) && pex.getObjects().size() > 0){
+    if (params.recreateDirStructure && (pex.getGameType() == Pex::Binary::Fallout4Script || pex.getGameType() == Pex::Binary::StarfieldScript || pex.getGameType() == Pex::Binary::Fallout76Script) && pex.getObjects().size() > 0){
         std::string script_path = pex.getObjects()[0].getName().asString();
         std::replace(script_path.begin(), script_path.end(), ':', '/');
         dir_structure = fs::path(script_path).remove_filename();
